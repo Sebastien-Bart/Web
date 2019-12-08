@@ -1,0 +1,172 @@
+/* BART Sébastien KROL Mikolaï */
+
+#carteCampus {
+  width: 60%;
+  height: 70%;
+  position: absolute;
+  right: 2%;
+  bottom: 15%;
+  border-radius: 35px;
+}
+
+body {
+  width: 100%;
+  margin: 0px auto;
+  background-color: rgba(41, 54, 101, 0.86);
+  color: white;
+  font-family: ubuntu;
+}
+
+#error img {
+  float: left;
+  width: 30px;
+  margin-left: 20px;
+}
+
+
+header {
+  text-align: center;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(104, 188, 242, 0.32);
+  padding-top: 1px;
+}
+
+h1 {
+  margin: 15px auto 0px auto;
+  width: 300px;
+  background-image: url(../images/gas-pump-solid.svg);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: unset;
+}
+
+h3 {
+  margin: inherit;
+}
+
+#formulaire {
+  text-align: center;
+  width: 30%;
+  height: 70%;
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 5%;
+  bottom: 15%;
+  margin-top: 5%;
+}
+
+form {
+  margin-top: 3%;
+}
+
+.formError {
+  box-shadow: 0px 0px 3px 3px red;
+}
+
+.formValid {
+  box-shadow: 0px 0px 3px 3px green;
+}
+
+#selecCarburants div.carburant {
+  margin: 20px 0px;
+}
+
+div.rayonEtVille {
+  display: inline-flex;
+  padding-bottom: 30px;
+}
+
+div.rayonEtVille input {
+  width: 80%;
+  height: 30px;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.3);
+}
+
+#formulaire div .titreInput {
+  text-decoration: underline;
+  margin: 3% 0px;
+}
+
+table {
+  display: none;
+}
+
+footer {
+  padding-top: px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  background-color: rgba(104, 188, 242, 0.32);
+}
+
+/* --- MEDIA --- */
+
+@media(max-width:580px){
+  h3{
+    display: none;
+  }
+}
+
+@media(max-width:620px){
+  @media(max-height:530px){
+    p {
+      display: none;
+    }
+  }
+}
+
+@media(max-height: 850px) {
+  #selecCarburants div.carburant {
+    margin: 10px 0px;
+  }
+}
+
+@media(max-height: 700px) {
+  #selecCarburants div.carburant {
+    margin: 0px;
+  }
+
+}
+
+@media(max-height: 590px){
+  #error {
+    display: none;
+  }
+  p {
+    display: none;
+  }
+}
+
+@media(max-height: 530px) {
+  #selecCarburants div.carburant {
+    display: inline;
+  }
+
+
+  #formulaire {
+    height: inherit;
+    bottom: inherit;
+    margin-top: 20px;
+    height: 300px;
+  }
+
+  #carteCampus {
+    height: 300px;
+    position: absolute;
+    bottom: inherit;
+    margin-top: 20px;
+  }
+}
+
+@media(max-height: 440px) {
+  footer {
+    display: none;
+  }
+}
