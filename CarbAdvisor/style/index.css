@@ -1,0 +1,507 @@
+/** KROL Mikolaï BART Sébastien Groupe 3 */
+
+body{
+  background-color: whitesmoke;
+  margin: 0;
+  position: relative;
+}
+
+#contenuPage {
+  margin: 0 20 0 20;
+}
+
+/** INFOS ------------------- */
+
+#infos h3 {
+  color: rgb(0, 197, 98);
+  text-decoration: underline;
+}
+
+#infos h4 {
+  color: #5db3cf;
+  text-decoration: underline;
+}
+
+#infos{
+  background-color: white;
+  border: solid 2px lightgray;
+  border-radius: 10px;
+  padding: 10;
+  margin-bottom: 20px
+}
+
+
+/** élèments cachés -----------------------------------------------*/
+
+.notVisible, #carte.notVisible, #form_recherche.notVisible, #create_post.notVisible, #note_station.notVisible, #posts.notVisible{
+  display: none;
+}
+
+div#showResult {
+  color: white;
+  text-align: center;
+  width: 400px;
+  border: solid #40476b 2px;
+  border-radius: 100px;
+  position: fixed;
+  transition-duration: 2s;
+  top: 50px;
+  right: -1000px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-right: 100px;
+  z-index:8;
+}
+
+#showResult p {
+  width: 250px;
+  background-color: rgb(84, 66, 56);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  padding: 8px 0px;
+}
+
+div#showResult img {
+  width: 30px;
+  background-color: lightgoldenrodyellow;
+  border-radius: 100px;
+  border: solid 1px white;
+}
+
+#showResult img:hover {
+  cursor: pointer;
+}
+
+/** carte ----------------------------------------------------------*/
+
+#carte {
+  width : 90%;
+  height : 60%;
+  border: solid 0.1px lightgrey;
+  z-index: 1;
+  margin: auto;
+  border-radius: 10px
+}
+
+/** menu -----------------------------------------------------------*/
+
+header > div {
+  display: inline-block;
+}
+
+header {
+  background-color: white;
+  margin-bottom: 50px;
+  height: 70px;
+}
+
+h2 span {
+  color: rgb(0, 230, 115);
+}
+
+#titre img {
+  width: 30px;
+  transform: translateY(20%)
+}
+
+#titre{
+  /** display: inline-flex;*/
+  margin-left: 10px;
+  transform: translateY(35%)
+}
+
+#titre h2,
+#titre img {
+  display: inline;
+}
+
+h2 {margin-left: 5px;}
+h2:hover {cursor: pointer;}
+
+#menu li {
+  display: inline-block;
+  transition: background-color ease-in-out 0.3s;
+  margin-right: 20px;
+  border-radius: 80px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 40px; height: 25px;
+}
+
+#menu img[src="img/deconnexion.png"] {
+  width: 25px;
+}
+
+#menu img[src="img/connexion.png"] {
+  width: 25px;
+}
+
+#menu img {
+  width: 40px; height: 25px;
+}
+
+#menu li.separation {
+  background-color: black;
+  width: 2px;
+  height: 18px
+}
+
+#menu li:hover {
+  background-color: lightblue!important;;
+  cursor: pointer;
+}
+
+#menu li.separation:hover{
+  background-color: black!important;;
+  cursor: initial;
+}
+
+#menu {
+  text-align: center;
+  margin: auto;
+  float: right;
+}
+
+#menu ul {
+  text-align: center;
+}
+
+#menu ul:hover{cursor: default;}
+
+
+
+/**disposition Accueil ----------------------------------------------------*/
+
+#mask {
+  z-index: 5;
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;
+  width: 100%;
+  background-color: lightgray;
+  opacity: 0.7;
+  display: none;
+  transition-duration: 1s;
+}
+
+#recherche {
+  background-image: url(../img/fond_carbs.jpg);
+  width: 100%;
+  text-align: center;
+  height: 80px;
+  background-position-x: 50%;
+  background-position-y: 70%;
+  overflow: hidden;
+  border: solid 2px lightgrey;
+  border-radius: 15px;
+}
+
+div#selecVille {
+  margin-bottom: 30px;
+}
+
+#note_station, #create_post{
+  display: inline-block;
+}
+
+/**form recherche -------------------------------------------------*/
+
+#form_recherche{
+  border: solid 3px lightgrey;
+  border-radius: 15px;
+  background-color: white;
+  width: 40%;
+  margin: auto;
+  height: 60px;
+  margin-top: 10px;
+  z-index: 6;
+  position: relative;
+  transition-duration: 1s;
+  transition-timing-function:ease-in-out;
+  overflow: hidden;
+}
+
+/** tableau stations ----------------------------------------------*/
+
+table {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+  background-color: lightgrey;
+}
+
+thead th {
+  padding: 6px 10px;
+}
+
+thead {
+  background-color: rgb(58, 122, 177);
+  color: white;
+}
+
+td{
+  background-color: white;
+}
+
+#showServices {
+  margin-top: 10px;
+}
+
+/** posts stations --------------------------------------------------*/
+
+#posts{
+  overflow: auto;
+  height: 250px;
+  border: solid 2px lightgray;
+  margin-top: 50px;
+  background-color: lightgrey;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px
+}
+
+#posts h3 {
+  background-color: rgb(58, 122, 177);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
+}
+
+/** mes posts -----------------------------------------------------*/
+
+div.post{
+  width: 80%;
+  border: solid 2px lightgrey;
+  margin-top: 30px;
+  padding: 10px 20px;
+  margin: 10 auto;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
+}
+
+.post .contenuPost {
+  background-color: whitesmoke;
+  padding: 10px;
+  margin: 15px 0px;
+}
+
+.post .nblikePost,
+.post .nbnolikePost{
+  display: inline;
+}
+
+.nbnolikePost {
+  margin-left: 20px;
+}
+
+.post .titrePost {
+  font-style: italic;
+  margin: 5px 0px;
+  margin-left: 70px;
+  background-color: whitesmoke;
+}
+
+.post .auteurPost,
+.post .datePost {
+  display: inline;
+  margin-left: 5px;
+}
+
+.post .auteurPost {
+  margin-left: 20px;
+}
+
+.post img {
+  float: left;
+  border: solid 1px lightgrey;
+  border-radius: 50%;
+}
+
+.post .datePost{
+  float: right;
+}
+
+.post .auteurPost{
+  font-weight: bold;
+}
+
+/** Poster un avis / note ------------------------------------------------------*/
+
+#create_post{
+  margin-right: 5%;
+}
+
+#create_post,
+#note_station {
+  width: 45%;
+  text-align: center;
+  background-color: white;
+  border: solid 2px lightgray;
+  border-radius: 8px;
+  margin-top: 30px;
+  vertical-align: top;
+}
+
+#create_post fieldset,
+#note_station fieldset {
+  background-color: lightgrey;
+  border: none;
+  border-radius: 20px;
+}
+
+#create_post h3,
+#note_station h3 {
+  background-color: rgb(58, 122, 177);
+  color: white;
+  border-radius: 8px;
+  margin: 0px 0px 20px 0px;
+  padding: 3px 0px;
+}
+
+#create_post input{
+  width: 90%;
+}
+
+#note_station{
+  display: inline-block;
+}
+
+/** mon profil --------------------------------------------------- */
+
+.monProfil {
+  background-color: white;
+  border: solid 2px lightgrey;;
+  padding: 10px;
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+.monProfil div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.monProfil div div {
+  background-color: whitesmoke;
+  padding: 5px 5px;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+}
+
+/** Connexion / Register ----- */
+
+#form_login,
+#form_register{
+  background-color: white;
+  width: 90%;
+  padding: 0px 10px 20px 10px;
+  border: solid 2px lightgray;
+  border-radius: 8px;
+}
+
+#form_login fieldset,
+#form_register fieldset{
+  background-color: whitesmoke;
+  border: solid 1px lightgrey;
+  border-radius: 10px;
+}
+
+/** boutons -------------------------------------------------------*/
+
+button {
+  background-color: #3b5998;
+  color: white;
+  padding: 5px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+button:hover{
+  cursor: pointer;
+  background-color: rgb(85, 136, 186);
+}
+
+button[value=dislike]{
+  background-color: darkred;
+  margin-left: 10px;
+}
+
+button[value=like]{
+    margin-left: 10px;
+}
+
+button[value=dislike]:hover {
+  background-color: rgb(201, 21, 21);
+}
+
+button[value=deletePost]{
+  background-color: darkred;
+  margin-left: 10px;
+}
+
+button[value=deletePost]:hover{
+  background-color: rgb(201, 21, 21);
+}
+
+#conteneurButtonBests {
+  margin: 20px auto;
+  width: 200px;
+}
+
+/** afficher profil auteurs posts ----------------------------------*/
+
+#posts .auteurPost{
+  color: blue;
+  text-decoration: underline;
+}
+
+#posts .auteurPost:hover{
+  cursor: pointer;
+}
+
+/** nblike et nbnolike */
+
+.nblikePost{
+  background-image: url(../img/like.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 25px 25px;
+  padding: 5px 25px 5px 0px;
+}
+
+.nbnolikePost{
+  background-image: url(../img/dislike.png);
+  background-repeat: no-repeat;
+  background-position:center right;
+  background-size: 23px 23px;
+  padding: 5px 25px 5px 0px;
+}
+
+/** MEDIA QUERYS ----------------------- */
+
+@media(max-width:750px){
+  #titre {
+    display: none;
+  }
+
+  #menu {
+    float: unset;
+    width: 100%;
+    margin: auto;
+  }
+
+}
+
+@media(max-width:500px){
+  header{
+    height: 100px
+  }
+}
