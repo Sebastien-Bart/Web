@@ -1,0 +1,152 @@
+body {
+  background-color: lightgray;
+  width: 90%;
+  margin: auto;
+  text-align:justify;
+}
+
+.bleu {
+  color: blue;
+}
+
+.rouge {
+  color: red;
+}
+
+.vert{
+  color: green;
+}
+
+.texte {
+  background-color: rgb(236, 236, 236);
+  padding: 1px;
+  border-radius: 8px;
+  width: 90%;
+  margin: auto;
+}
+
+p,q {
+  font-family: fantasy;
+  width: 92%;
+  margin: 15px auto;
+  font-size: 16px;
+
+}
+
+header {
+  border: solid black 1px;
+  text-align: center;
+  background-color: white;
+  margin: 10px auto 30px auto;
+  border-radius: 5px;
+  text-decoration: underline;
+  width: 85%;
+  font-family: Georgia, serif;
+  font-size: small;
+}
+
+h3 {
+  background-color: white;
+  background-image: url(../images/Pokeball.png);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: 5px;
+  margin: 30px;
+  padding: 5px 0px 5px 50px;
+  border: solid black 1px;
+  border-radius: 15px;
+}
+
+footer {
+  border-top:solid black 1px;
+  margin-top: 50px;
+  padding-top: 20px;
+}
+
+footer p {
+  font-size: 12px;
+}
+
+/* Dans 3 fiches ou ici ? */
+
+.tableau {
+  text-align: center;
+}
+
+table{
+  display: inline-block;
+  vertical-align: top;
+  background-color: white;
+  font-family: candara;
+}
+
+thead {
+  text-align: center;
+  background-color: rgb(255, 225, 172);
+  text-decoration: underline;
+}
+
+th {
+  background-color: rgb(218, 190, 114);
+}
+
+table.Carapuce tbody td{
+  background-color: rgb(90, 200, 243);
+  color: white;
+}
+
+table.Salameche tbody td {
+  background-color: rgb(249, 160, 118);
+  color: white;
+}
+
+table.Bulbizarre tbody td {
+  background-color: rgba(111, 195, 44, 0.85);
+  color: white;
+}
+
+td {
+  padding: 15px;
+}
+
+div.texte>p img[width] {
+  float: left;
+  padding-right: 10px;
+}
+
+.menu1 {
+  text-align: center;
+  list-style-image: url(../images/poke_ball.png);
+}
+
+.menu1 a, .menu2 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ol {
+  text-decoration: underline;
+  width: 23%;
+  margin: auto;
+  text-align: left;
+}
+
+ol li {
+  margin: 5px 0px 5px 0px;
+}
+
+
+
+
+
+
+
+
+
+/* -----MEDIA QUERRY------ */
+@media (max-width: 870px) {
+  h3 {
+    background-image: none;
+    padding: 5px 10px;
+  }
+}
