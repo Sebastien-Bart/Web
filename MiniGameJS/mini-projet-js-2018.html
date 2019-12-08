@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+
+<head>
+	<meta charset="UTF-8"/>
+	<title>projet 2018 : ball trap</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/style-project2018.css"/>
+    <script src="scripts/project2018.js"></script>
+
+</head>
+
+<body>
+
+<button id="create">Une cible</button>
+
+<div id="score"> </div>
+
+<div id="terrain"> </div>
+
+<div id="control">
+	<div>
+		cibles restantes <span id="remaining">0</span>
+		<!-- le chonomètre -->
+		<span id="chrono">
+			<span id="minutes">0</span>'<span id="seconds">00</span>"<span id="tenth">0</span>
+		</span>
+	</div>
+	<div> <span id="nbdecibles"> nombre de cibles : <input id="nbtargets" type="number" value="10" min="0" max="99"/> </span> <a href="#terrain"> <button id="start">Démarrer</button> </a> </div>
+	<div id="difficulties"> <span class="difficulty">Difficulté:</span> <br> Facile:<input type="radio" name="diff" id="facile"/> Normal: <input checked type="radio" name="diff" id="normal"/> Difficile: <input type="radio" name="diff" id="difficile"/> INSANE: <input type="radio" name="diff" id="insane"/> </div>
+	<div id="mode"> <span class="modes"> Mode: <button type="button" class="help" onclick="showHelp2()"> ? </button> </span> <br> Disparition: <input type="radio" name="mod" id="disparition"/> Jeu de base: <input checked type="radio" name="mod" id="base"/> Course aux points: <input type="radio" name="mod" id="points"/> </div>
+</div>
+
+<div id="saves">
+	<h1>Scores sauvegardés</h1>
+	<span class="saves_disparition">
+		<h2> En mode Disparition: </h2>
+		<div id="saves_facile_disparition">
+		<h3>En difficulté facile:</h3>
+		 </div>
+		 <div id="saves_normal_disparition">
+		<h3>En difficulté normal:</h3>
+		 </div>
+		 <div id="saves_difficile_disparition">
+		<h3>En difficulté difficile:</h3>
+		 </div>
+		 <div id="saves_insane_disparition">
+		<h3>En difficulté INSANE:</h3>
+		 </div>
+	 </span>
+	 <span class="saves_base">
+		 <h2> En mode Jeu de base: </h2>
+ 		<div id="saves_facile_base">
+ 		<h3>En difficulté facile:</h3>
+ 		 </div>
+ 		 <div id="saves_normal_base">
+ 		<h3>En difficulté normal:</h3>
+ 		 </div>
+ 		 <div id="saves_difficile_base">
+ 		<h3>En difficulté difficile:</h3>
+ 		 </div>
+ 		 <div id="saves_insane_base">
+ 		<h3>En difficulté INSANE:</h3>
+ 		 </div>
+ 	 </span>
+	 <span class="saves_points">
+		 <h2> En mode Course aux points: </h2>
+ 		<div id="saves_facile_points">
+ 		<h3>En difficulté facile:</h3>
+ 		 </div>
+ 		 <div id="saves_normal_points">
+ 		<h3>En difficulté normal:</h3>
+ 		 </div>
+ 		 <div id="saves_difficile_points">
+ 		<h3>En difficulté difficile:</h3>
+ 		 </div>
+ 		 <div id="saves_insane_points">
+ 		<h3>En difficulté INSANE:</h3>
+ 		 </div>
+ 	 </span>
+</div>
+
+</body>
+
+</html>
