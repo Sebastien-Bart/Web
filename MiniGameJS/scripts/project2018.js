@@ -36,147 +36,147 @@ var setUpListeners = function () {
 	start.addEventListener('click',startChrono);
 	start.addEventListener('click', MAJremaining);
 	var difficulties = document.querySelectorAll("#difficulties input");
-	for (elem of difficulties) { // EXTENSION 'difficultés'
-		elem.addEventListener('change', MAJterrainDifficulty); // EXTENSION 'difficultés'
-	}; // EXTENSION 'difficultés'
-	var modes = document.querySelectorAll("#mode input"); // EXTENSION 'Course aux points' 'Disparition'
-	for (elem of modes) { // EXTENSION 'Course aux points' 'Disparition'
-		elem.addEventListener('change', MAJmodes); // EXTENSION 'Course aux points' 'Disparition'
-		elem.addEventListener('change', checkCoursePoints); // EXTENSION 'Course aux points' 'Disparition'
+	for (elem of difficulties) {
+		elem.addEventListener('change', MAJterrainDifficulty);
+	};
+	var modes = document.querySelectorAll("#mode input"); 
+	for (elem of modes) { 
+		elem.addEventListener('change', MAJmodes); 
+		elem.addEventListener('change', checkCoursePoints); 
 	};
 };
 window.addEventListener('load', setUpListeners);
 
-/* EXTENSION 'Course aux points' ----- checkCoursePoints: check si le mode est course aux points, si oui, modifie le pannel des options et modifie le chrono */
-var checkCoursePoints = function () { // EXTENSION 'Course aux points'
-	if (MODE == 'points') { // EXTENSION 'Course aux points'
-			min = 1; // EXTENSION 'Course aux points'
-			var minutes = document.getElementById("minutes"); // EXTENSION 'Course aux points'
-			minutes.innerHTML = min; // EXTENSION 'Course aux points'
-			var nbdecibles = document.getElementById("nbdecibles"); // EXTENSION 'Course aux points'
-			nbdecibles.style.display = "none"; // EXTENSION 'Course aux points'
-		}; // EXTENSION 'Course aux points'
+/* EXTENSION ----- checkCoursePoints: check si le mode est course aux points, si oui, modifie le pannel des options et modifie le chrono */
+var checkCoursePoints = function () { 
+	if (MODE == 'points') { 
+			min = 1; 
+			var minutes = document.getElementById("minutes"); 
+			minutes.innerHTML = min; 
+			var nbdecibles = document.getElementById("nbdecibles"); 
+			nbdecibles.style.display = "none"; 
+		}; 
 };
 
-/* EXTENSION 'Course aux points' ----- startChronoPoints: Préparre et démarre le chrono pour le mode course au point (lance la partie)*/
-var startChronoPoints = function() { // EXTENSION 'Course aux points'
-	scorePoints = 0;// EXTENSION 'Course aux points'
-	min = 0; // EXTENSION 'Course aux points'
-	sec = 59; // EXTENSION 'Course aux points'
-	time = 9; // EXTENSION 'Course aux points'
-	chronoTimer = window.setInterval(ChronoDecrementation, 100); // EXTENSION 'Course aux points'
-	game = true; // EXTENSION 'Course aux points'
-	chronoApparitionCible = window.setInterval(ajoutCibleCourseTimeout, 500); // EXTENSION 'Course aux points'
-}; // EXTENSION 'Course aux points'
+/* EXTENSION ----- startChronoPoints: Préparre et démarre le chrono pour le mode course au point (lance la partie)*/
+var startChronoPoints = function() { 
+	scorePoints = 0;
+	min = 0; 
+	sec = 59; 
+	time = 9; 
+	chronoTimer = window.setInterval(ChronoDecrementation, 100); 
+	game = true; 
+	chronoApparitionCible = window.setInterval(ajoutCibleCourseTimeout, 500); 
+}; 
 
-var ajoutCibleCourseTimeout = function() { // EXTENSION 'Course aux points'
-	window.setTimeout(ajoutCibleCourse(), Math.random * 3000); // EXTENSION 'Course aux points'
-};  // EXTENSION 'Course aux points'
+var ajoutCibleCourseTimeout = function() { 
+	window.setTimeout(ajoutCibleCourse(), Math.random * 3000); 
+};  
 
-/* EXTENSION 'Course aux points' ----- ajoutCibleCourse: variante de ajoutCible, ajoute une cible mais elles sont différenciées (bonus, malus, normal) et disparaissent */
-var ajoutCibleCourse = function() { // EXTENSION 'Course aux points'
-	var chance = Math.random(); // EXTENSION 'Course aux points'
-	var newTarget = document.createElement("div"); // EXTENSION 'Course aux points'
-	var terrain = document.getElementById("terrain"); // EXTENSION 'Course aux points'
-	var width =  window.getComputedStyle(terrain).getPropertyValue('width'); // EXTENSION 'Course aux points'
-	var height =  window.getComputedStyle(terrain).getPropertyValue('height'); // EXTENSION 'Course aux points'
-	newTarget.style.top = Math.random() * (parseInt(height) - TARGET_HEIGHT) + 'px'; // EXTENSION 'Course aux points'
-	newTarget.style.left = Math.random() * (parseInt(width) - TARGET_WIDTH) + 'px'; // EXTENSION 'Course aux points'
-	newTarget.style.width = TARGET_WIDTH + "px"; // EXTENSION 'Course aux points'
-	newTarget.style.height = TARGET_HEIGHT + "px"; // EXTENSION 'Course aux points'
+/* EXTENSION ----- ajoutCibleCourse: variante de ajoutCible, ajoute une cible mais elles sont différenciées (bonus, malus, normal) et disparaissent */
+var ajoutCibleCourse = function() { 
+	var chance = Math.random(); 
+	var newTarget = document.createElement("div"); 
+	var terrain = document.getElementById("terrain"); 
+	var width =  window.getComputedStyle(terrain).getPropertyValue('width'); 
+	var height =  window.getComputedStyle(terrain).getPropertyValue('height'); 
+	newTarget.style.top = Math.random() * (parseInt(height) - TARGET_HEIGHT) + 'px'; 
+	newTarget.style.left = Math.random() * (parseInt(width) - TARGET_WIDTH) + 'px'; 
+	newTarget.style.width = TARGET_WIDTH + "px"; 
+	newTarget.style.height = TARGET_HEIGHT + "px"; 
 	if (chance > 0.7) { // CIBLE MALUS = -10
-		newTarget.className = "target on malus"; // EXTENSION 'Course aux points'
-		newTarget.style.boxShadow = "0px 0px 30px 5px red"; // EXTENSION 'Course aux points'
+		newTarget.className = "target on malus"; 
+		newTarget.style.boxShadow = "0px 0px 30px 5px red"; 
 	}
 	if (chance < 0.7 && chance > 0.5) { // CIBLE CHANCE = 20
-		newTarget.className = "target on bonus"; // EXTENSION 'Course aux points'
-		newTarget.style.boxShadow = "0px 0px 30px 5px gold"; // EXTENSION 'Course aux points'
+		newTarget.className = "target on bonus"; 
+		newTarget.style.boxShadow = "0px 0px 30px 5px gold"; 
 	}
 	if (chance < 0.5) { // CIBLE NORMALE = 10
-		newTarget.className = 'target on normal'; // EXTENSION 'Course aux points'
+		newTarget.className = 'target on normal'; 
 	}
-	newTarget.addEventListener('click', suppCibleTimeout); // EXTENSION 'Course aux points'
-	newTarget.addEventListener('click', MAJremaining); // EXTENSION 'Course aux points'
-	var imgTarget = document.createElement("img"); // EXTENSION 'Course aux points'
-	imgTarget.src = "images/bubulle.png"; // EXTENSION 'Course aux points'
-	imgTarget.style.width = TARGET_WIDTH + "px"; // EXTENSION 'Course aux points'
-	imgTarget.style.height = TARGET_HEIGHT + "px"; // EXTENSION 'Course aux points'
-	newTarget.appendChild(imgTarget); // EXTENSION 'Course aux points'
-	terrain.appendChild(newTarget); // EXTENSION 'Course aux points'
-	window.setTimeout(function() {dispCible(newTarget);}, Math.random() * 5000 + 500); // EXTENSION 'Course aux points'
-	Cibles++; // EXTENSION 'Course aux points'
-	MAJremaining(); // EXTENSION 'Course aux points'
-} // EXTENSION 'Course aux points'
+	newTarget.addEventListener('click', suppCibleTimeout); 
+	newTarget.addEventListener('click', MAJremaining); 
+	var imgTarget = document.createElement("img"); 
+	imgTarget.src = "images/bubulle.png"; 
+	imgTarget.style.width = TARGET_WIDTH + "px"; 
+	imgTarget.style.height = TARGET_HEIGHT + "px"; 
+	newTarget.appendChild(imgTarget); 
+	terrain.appendChild(newTarget); 
+	window.setTimeout(function() {dispCible(newTarget);}, Math.random() * 5000 + 500); 
+	Cibles++; 
+	MAJremaining(); 
+} 
 
-/* EXTENSION 'Course aux points' ----- ChronoDecrementation: Gestion et affichage du chrono pour le mode Course aux points */
-var ChronoDecrementation = function() {  // EXTENSION 'Course aux points'
-	time--; // EXTENSION 'Course aux points'
-	if (time == 0 && sec != 0) { // EXTENSION 'Course aux points'
-		sec--; // EXTENSION 'Course aux points'
-		time = 9; // EXTENSION 'Course aux points'
-	}; // EXTENSION 'Course aux points'
-	if (sec == 0 && time == 0) { // EXTENSION 'Course aux points'
-		window.clearInterval(chronoApparitionCible); // EXTENSION 'Course aux points'
-		afficheScore(); // EXTENSION 'Course aux points'
-		game = false; // EXTENSION 'Course aux points'
-		var son = new Audio ('sons/victoire.wav'); // EXTENSION 'Course aux points'
-		son.play(); // EXTENSION 'Course aux points'
-		stopFieldChrono(); // EXTENSION 'Course aux points'
-	}; // EXTENSION 'Course aux points'
-	var dixieme = document.getElementById("tenth"); // EXTENSION 'Course aux points'
-	dixieme.innerHTML = time; // EXTENSION 'Course aux points'
-	var secondes = document.getElementById("seconds"); // EXTENSION 'Course aux points'
-	secondes.innerHTML = sec; // EXTENSION 'Course aux points'
-	var minutes = document.getElementById("minutes"); // EXTENSION 'Course aux points'
-	minutes.innerHTML = min; // EXTENSION 'Course aux points'
-}; // EXTENSION 'Course aux points'
+/* EXTENSION ----- ChronoDecrementation: Gestion et affichage du chrono pour le mode Course aux points */
+var ChronoDecrementation = function() {  
+	time--; 
+	if (time == 0 && sec != 0) { 
+		sec--; 
+		time = 9; 
+	}; 
+	if (sec == 0 && time == 0) { 
+		window.clearInterval(chronoApparitionCible); 
+		afficheScore(); 
+		game = false; 
+		var son = new Audio ('sons/victoire.wav'); 
+		son.play(); 
+		stopFieldChrono(); 
+	}; 
+	var dixieme = document.getElementById("tenth"); 
+	dixieme.innerHTML = time; 
+	var secondes = document.getElementById("seconds"); 
+	secondes.innerHTML = sec; 
+	var minutes = document.getElementById("minutes"); 
+	minutes.innerHTML = min; 
+}; 
 
-/* EXTENSION 'Course aux points' 'Disparition' ----- MAJmodes: Nettoie le terrain, le chrono, et met en mémoire le mode sélectionné */
+/* EXTENSION 'Disparition' ----- MAJmodes: Nettoie le terrain, le chrono, et met en mémoire le mode sélectionné */
 var MAJmodes = function() {
-	window.clearInterval(chronoApparitionCible); // EXTENSION 'Course aux points' 'Disparition'
-	MODE = this.id; // EXTENSION 'Course aux points' 'Disparition'
-	supprimeAffScore(); // EXTENSION 'Course aux points' 'Disparition'
-	stopFieldChrono(); // EXTENSION 'Course aux points' 'Disparition'
-	if (MODE != 'points') { // EXTENSION 'Course aux points' 'Disparition'
-		var nbdecibles = document.getElementById("nbdecibles"); // EXTENSION 'Course aux points' 'Disparition'
-		nbdecibles.style.display = "inline"; // EXTENSION 'Course aux points' 'Disparition'
+	window.clearInterval(chronoApparitionCible); 
+	MODE = this.id; 
+	supprimeAffScore(); 
+	stopFieldChrono(); 
+	if (MODE != 'points') { 
+		var nbdecibles = document.getElementById("nbdecibles"); 
+		nbdecibles.style.display = "inline"; 
 	};
 };
 
 /* EXTENSION 'difficultés' MAJterrainDifficulty : Mets a jour le terrain selon la difficulté choisie, et nettoie le terrain et réintialise le chrono */
-var MAJterrainDifficulty = function () { // EXTENSION 'difficultés'
-	DIFF = this.id; // EXTENSION 'difficultés'
-	var terrain = document.getElementById("terrain"); // EXTENSION 'difficultés'
-	var facile = document.getElementById("facile"); // EXTENSION 'difficultés'
-	if (facile.checked) { // EXTENSION 'difficultés'
-		terrain.style.width = '300px'; // EXTENSION 'difficultés'
-		terrain.style.height = '300px'; // EXTENSION 'difficultés'
-		TARGET_WIDTH = 50; // EXTENSION 'difficultés'
-		TARGET_HEIGHT = 50; // EXTENSION 'difficultés'
-	} // EXTENSION 'difficultés'
-	var normal = document.getElementById("normal"); // EXTENSION 'difficultés'
-	if (normal.checked) { // EXTENSION 'difficultés'
-		terrain.style.width = '400px'; // EXTENSION 'difficultés'
-		terrain.style.height = '400px'; // EXTENSION 'difficultés'
-		TARGET_WIDTH = 30; // EXTENSION 'difficultés'
+var MAJterrainDifficulty = function () {
+	DIFF = this.id;
+	var terrain = document.getElementById("terrain");
+	var facile = document.getElementById("facile");
+	if (facile.checked) {
+		terrain.style.width = '300px';
+		terrain.style.height = '300px';
+		TARGET_WIDTH = 50;
+		TARGET_HEIGHT = 50;
+	}
+	var normal = document.getElementById("normal");
+	if (normal.checked) {
+		terrain.style.width = '400px';
+		terrain.style.height = '400px';
+		TARGET_WIDTH = 30;
 		TARGET_HEIGHT = 30;
-	} // EXTENSION 'difficultés'
-	var difficile = document.getElementById("difficile"); // EXTENSION 'difficultés'
-	if (difficile.checked) { // EXTENSION 'difficultés'
-		terrain.style.width = '800px'; // EXTENSION 'difficultés'
-		terrain.style.height = '500px'; // EXTENSION 'difficultés'
-		TARGET_WIDTH = 20; // EXTENSION 'difficultés'
-		TARGET_HEIGHT = 20; // EXTENSION 'difficultés'
-	} // EXTENSION 'difficultés'
-	var insane = document.getElementById("insane"); // EXTENSION 'difficultés'
-	if (insane.checked) { // EXTENSION 'difficultés'
-		terrain.style.width = '100%'; // EXTENSION 'difficultés'
-		terrain.style.height = '500px'; // EXTENSION 'difficultés'
-		TARGET_WIDTH = 10; // EXTENSION 'difficultés'
-		TARGET_HEIGHT = 10; // EXTENSION 'difficultés'
-	}; // EXTENSION 'difficultés'
-	stopFieldChrono(); // EXTENSION 'difficultés'
-}; // EXTENSION 'difficultés'
+	}
+	var difficile = document.getElementById("difficile");
+	if (difficile.checked) {
+		terrain.style.width = '800px';
+		terrain.style.height = '500px';
+		TARGET_WIDTH = 20;
+		TARGET_HEIGHT = 20;
+	}
+	var insane = document.getElementById("insane");
+	if (insane.checked) {
+		terrain.style.width = '100%';
+		terrain.style.height = '500px';
+		TARGET_WIDTH = 10;
+		TARGET_HEIGHT = 10;
+	};
+	stopFieldChrono();
+};
 
 
 /* stopFieldChrono : Nettoie le terrain, réintialise le chrono */
@@ -232,43 +232,43 @@ var ajoutCible = function () {
 	imgTarget.style.height = TARGET_HEIGHT + "px";
 	newTarget.appendChild(imgTarget);
 	terrain.appendChild(newTarget);
-	if (disparition.checked) { // EXTENSION 'Disparition'
-		window.setTimeout(function() {dispCible(newTarget);}, Math.random() * 5000 + 500); // EXTENSION 'Disparition'
-	}; // EXTENSION 'Disparition'
+	if (disparition.checked) {
+		window.setTimeout(function() {dispCible(newTarget);}, Math.random() * 5000 + 500);
+	};
 	Cibles++;
 	MAJremaining();
 };
 
 
 /* EXTENSION 'Disparition' dispCible: Supprime la cible passée en param puis en ajoute une nouvelle (sauf si en mode course au point) */
-var dispCible = function(elem) { // EXTENSION 'Disparition'
-	if (elem.className.indexOf('hit') == -1 && elem.parentNode != null) { // EXTENSION 'Disparition'
-		elem.className = "target on hit"; // EXTENSION 'Disparition'
-		window.setTimeout(function() {suppCible(elem);}, 1000); // EXTENSION 'Disparition'
-		this.removeEventListener('click', suppCibleTimeout); // EXTENSION 'Disparition'
-		Cibles--; // EXTENSION 'Disparition'
-		if (MODE != 'points') { // EXTENSION 'Disparition' 'Course aux points'
-			ajoutCible(); // EXTENSION 'Disparition' 'Course aux points'
-		}// EXTENSION 'Disparition' 'Course aux points'
+var dispCible = function(elem) {
+	if (elem.className.indexOf('hit') == -1 && elem.parentNode != null) {
+		elem.className = "target on hit";
+		window.setTimeout(function() {suppCible(elem);}, 1000);
+		this.removeEventListener('click', suppCibleTimeout);
+		Cibles--;
+		if (MODE != 'points') {
+			ajoutCible();
+		}
 	};
 };
 
 /* suppCibleTimeout : déclenche le timeout pour suppprimer une cible cliquée */
 var suppCibleTimeout = function () {
-	if (this.className == "target on malus") { // EXTENSION 'Course aux points'
-		scorePoints -= 50; // EXTENSION 'Course aux points'
-		var son = new Audio ('sons/malus.wav'); // EXTENSION 'Course aux points'
-		son.volume = 0.5; // EXTENSION 'Course aux points'
-		son.play(); // EXTENSION 'Course aux points'
-	} // EXTENSION 'Course aux points'
-	if (this.className == "target on bonus") { // EXTENSION 'Course aux points'
-		scorePoints += 20; // EXTENSION 'Course aux points'
-		var son = new Audio ('sons/bonus.mp3'); // EXTENSION 'Course aux points'
-		son.play(); // EXTENSION 'Course aux points'
-	} // EXTENSION 'Course aux points'
-	if (this.className == "target on") { // EXTENSION 'Course aux points'
-		scorePoints += 10; // EXTENSION 'Course aux points'
-	} // EXTENSION 'Course aux points'
+	if (this.className == "target on malus") { 
+		scorePoints -= 50; 
+		var son = new Audio ('sons/malus.wav'); 
+		son.volume = 0.5; 
+		son.play(); 
+	} 
+	if (this.className == "target on bonus") { 
+		scorePoints += 20; 
+		var son = new Audio ('sons/bonus.mp3'); 
+		son.play(); 
+	} 
+	if (this.className == "target on") { 
+		scorePoints += 10; 
+	} 
 	var son2 = new Audio ('sons/bulle.mp3');
 	son2.play();
 	this.className = 'target on hit';
@@ -352,8 +352,8 @@ var afficheScore = function () { //
 	affichage.appendChild(boutton);
 	var boutton2 = document.createElement("button");
 	boutton2.innerHTML = '<img src="images/save.png" width="20px"/>';
-	boutton2.addEventListener('click', askName); // EXTENSION 'Sauvegarde'
-	affichage.appendChild(boutton2); // EXTENSION 'Sauvegarde'
+	boutton2.addEventListener('click', askName);
+	affichage.appendChild(boutton2);
 };
 
 /* supprimeAffScore : supprime l'affichage du score */
@@ -364,67 +364,67 @@ var supprimeAffScore = function () {
 };
 
 /* EXTENSION 'Sauvegarde' askName : demande le pseudo du joueur avant de sauvegarder son score */
-var askName = function () {  // EXTENSION 'Sauvegarde'
-	this.removeEventListener('click', askName); // EXTENSION 'Sauvegarde'
-	var parent = document.querySelector(".affichescore"); // EXTENSION 'Sauvegarde'
-	var help = document.createElement('button'); // EXTENSION 'Sauvegarde'
-	help.innerHTML = "?"; // EXTENSION 'Sauvegarde'
-	help.className = "help"; // EXTENSION 'Sauvegarde'
-	help.addEventListener("click",showHelp); // EXTENSION 'Sauvegarde'
-	var p = document.createElement('p'); // EXTENSION 'Sauvegarde'
-	p.textContent = 'Sauvegarder ce score sous quel pseudo ?'; // EXTENSION 'Sauvegarde'
-	var username = document.createElement('input'); // EXTENSION 'Sauvegarde'
-	username.value = pseudo; // EXTENSION 'Sauvegarde'
-	username.type = 'text'; // EXTENSION 'Sauvegarde'
-	username.required = "true"; // EXTENSION 'Sauvegarde'
-	username.maxLength = "3"; // EXTENSION 'Sauvegarde'
-	username.pattern = "[A-Z]{3,3}"; // EXTENSION 'Sauvegarde'
-	username.size = '1'; // EXTENSION 'Sauvegarde'
-	username.placeholder = "AAA"; // EXTENSION 'Sauvegarde'
-	parent.appendChild(p); // EXTENSION 'Sauvegarde'
-	parent.appendChild(help); // EXTENSION 'Sauvegarde'
-	parent.appendChild(username); // EXTENSION 'Sauvegarde'
-	var validity = document.createElement('span'); // EXTENSION 'Sauvegarde'
-	parent.appendChild(validity); // EXTENSION 'Sauvegarde'
-	var submit = document.createElement('button'); // EXTENSION 'Sauvegarde'
-	submit.textContent = "OK"; // EXTENSION 'Sauvegarde'
-	submit.addEventListener("click", saveScore); // EXTENSION 'Sauvegarde'
-	parent.appendChild(submit); // EXTENSION 'Sauvegarde'
+var askName = function () { 
+	this.removeEventListener('click', askName);
+	var parent = document.querySelector(".affichescore");
+	var help = document.createElement('button');
+	help.innerHTML = "?";
+	help.className = "help";
+	help.addEventListener("click",showHelp);
+	var p = document.createElement('p');
+	p.textContent = 'Sauvegarder ce score sous quel pseudo ?';
+	var username = document.createElement('input');
+	username.value = pseudo;
+	username.type = 'text';
+	username.required = "true";
+	username.maxLength = "3";
+	username.pattern = "[A-Z]{3,3}";
+	username.size = '1';
+	username.placeholder = "AAA";
+	parent.appendChild(p);
+	parent.appendChild(help);
+	parent.appendChild(username);
+	var validity = document.createElement('span');
+	parent.appendChild(validity);
+	var submit = document.createElement('button');
+	submit.textContent = "OK";
+	submit.addEventListener("click", saveScore);
+	parent.appendChild(submit);
 };
 
 /* EXTENSION 'Sauvegarde' showHelp: Montre l'aide pour les conditions du pseudo */
-var showHelp = function () { // EXTENSION 'Sauvegarde'
-	window.alert('Votre pseudo doit être de la forme "AAA": exactement trois lettres en majuscules. (Comme dans les jeux arcades)') // EXTENSION 'Sauvegarde'
+var showHelp = function () {
+	window.alert('Votre pseudo doit être de la forme "AAA": exactement trois lettres en majuscules. (Comme dans les jeux arcades)')
 }
 
-/* EXTENSION 'Disparition' 'Course aux points' showHelp2: Montre l'aide pour la selection du mode de jeu */
-var showHelp2 = function() { // EXTENSION 'Disparition' 'Course aux points'
+/* EXTENSION 'Disparition' showHelp2: Montre l'aide pour la selection du mode de jeu */
+var showHelp2 = function() {
 	window.alert("Les différents modes:\n\n\nJeu de base: Choisissez un nombre de cible et une difficulté, puis abbatez toutes les cibles le plus rapidement possibles !\n\nDisparition: Même principe que le jeu de base: abbatez toutes les cibles le plus vite possibles, mais attention, elles disparaissent au bout d'un temps aléatoire (mais toujours supérieur à 0.5 secondes pour que la cible ne disparaisse pas juste après son apparition)\n\nCourse aux points: Vous avez une minute pour obtenir le plus de point possible, une cible normale vaut 10 points, une dorée 20 points, et une rouge vous enlève 50 points (taux d'apparition: normale: 50%, bonus: 20%, malus: 30%), attention, les cibles disparaissent au bout d'un temps aléatoire ! \n\n Bon jeu !")
 }
 
 /* EXTENSION 'Sauvegarde' saveScore: sauvegarde un score et nettoie l'affichage du score */
-var saveScore = function () { // EXTENSION 'Sauvegarde'
-	var parent = document.getElementById('saves_'+DIFF+'_'+MODE);// EXTENSION 'Sauvegarde'
-	var phrase = document.createElement('p');// EXTENSION 'Sauvegarde'
-	var username = document.querySelector('button + input');// EXTENSION 'Sauvegarde'
-	if (username.checkValidity()) {// EXTENSION 'Sauvegarde'
-		pseudo = username.value;// EXTENSION 'Sauvegarde'
-		if (MODE == 'points') {// EXTENSION 'Sauvegarde' 'Course aux points'
-			phrase.innerHTML = "<div class='username'>"+pseudo+" </div> a obtenu un total de <div class='score'>"+scorePoints+" points</div>.";// EXTENSION 'Sauvegarde' 'Course aux points'
-		}// EXTENSION 'Sauvegarde' 'Course aux points'
-		else {// EXTENSION 'Sauvegarde'
+var saveScore = function () {
+	var parent = document.getElementById('saves_'+DIFF+'_'+MODE);
+	var phrase = document.createElement('p');
+	var username = document.querySelector('button + input');
+	if (username.checkValidity()) {
+		pseudo = username.value;
+		if (MODE == 'points') {
+			phrase.innerHTML = "<div class='username'>"+pseudo+" </div> a obtenu un total de <div class='score'>"+scorePoints+" points</div>.";
+		}
+		else {
 			phrase.innerHTML = "<div class='username'>"+pseudo+" </div> a abbatu <div class='CiblesDebut'>"+CiblesDebut+" cibles</div> en <div class='score'>"+score+" secondes</div>.";
-		}// EXTENSION 'Sauvegarde'
-		parent.appendChild(phrase);// EXTENSION 'Sauvegarde'
-		var boutton = document.createElement("button");// EXTENSION 'Sauvegarde'
-		boutton.innerHTML = '<img src="images/trash.png" width="20px"/>';// EXTENSION 'Sauvegarde'
-		boutton.addEventListener('click', supprimeScore);// EXTENSION 'Sauvegarde'
-		phrase.appendChild(boutton);// EXTENSION 'Sauvegarde'
-		supprimeAffScore();// EXTENSION 'Sauvegarde'
-	};// EXTENSION 'Sauvegarde'
+		}
+		parent.appendChild(phrase);
+		var boutton = document.createElement("button");
+		boutton.innerHTML = '<img src="images/trash.png" width="20px"/>';
+		boutton.addEventListener('click', supprimeScore);
+		phrase.appendChild(boutton);
+		supprimeAffScore();
+	};
 };
 
 /* EXTENSION 'Sauvegarde' supprimeScore: supprime un score */
-var supprimeScore = function () {// EXTENSION 'Sauvegarde'
-	this.parentNode.remove();// EXTENSION 'Sauvegarde'
-}// EXTENSION 'Sauvegarde'
+var supprimeScore = function () {
+	this.parentNode.remove();
+}
